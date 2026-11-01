@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Manohar Reddy Maddikara | AI & ML Engineer Portfolio</title>
+    <meta name="description" content="Interactive AI Portfolio of Manohar Reddy Maddikara - AI & ML undergraduate engineer, machine learning developer, and full-stack web developer.">
+    <meta name="keywords" content="Manohar Reddy Maddikara, AI Engineer, Machine Learning, Portfolio, Flask, Python, Scikit-learn, Hyderabad">
+    <meta name="author" content="Manohar Reddy Maddikara">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Manohar Reddy Maddikara | AI & ML Engineer">
+    <meta property="og:description" content="Interactive ChatGPT-style portfolio featuring ML projects, technical skills, and certifications.">
+    <meta property="og:type" content="website">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- WebGL Interactive Fluid Canvas -->
+    <canvas id="fluid"></canvas>
+
+    <!-- Background Watermark Typography -->
+    <div class="watermark-container">
+        <div class="watermark-text">Manohar</div>
+    </div>
+
+    <!-- App Main Container -->
+    <div class="app-container">
+
+        <!-- =================================================================
+             1. TOP NAVIGATION (CHATGPT STYLE)
+             ================================================================= -->
+        <header class="top-nav" id="topNav">
+            <!-- Left: Status pill on hero, New Chat button in chat mode -->
+            <div class="nav-left">
+                <a href="javascript:void(0)" class="status-pill" id="statusPill" title="Hyderabad, India">
+                    <span class="pulse-dot"></span>
+                    <span>Open for AI / ML Roles • Hyderabad</span>
+                </a>
+                <button class="new-chat-btn hidden" id="newChatBtn" title="Start New Chat">
+                    <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                    <span>New Chat</span>
+                </button>
+            </div>
+
+            <!-- Center: App Title / Model Identity in Chat Mode -->
+            <div class="nav-center hidden" id="navModelTitle">
+                <div class="model-badge">
+                    <img src="assets/memoji.jpg" alt="Manohar Avatar" class="model-avatar">
+                    <span class="model-name">Manohar GPT</span>
+                    <span class="model-tag">AI & ML Engineer</span>
+                </div>
+            </div>
+
+            <!-- Right: GitHub, LinkedIn Profiles & Voice Toggle -->
+            <div class="top-nav-actions">
+                <a href="https://github.com/manohar-maddikara" target="_blank" rel="noopener noreferrer" class="icon-btn github-btn" title="GitHub - @manohar-maddikara" aria-label="GitHub Profile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/manoharreddy-maddikara-73ab60351/" target="_blank" rel="noopener noreferrer" class="icon-btn linkedin-btn" title="LinkedIn - Manohar Reddy Maddikara" aria-label="LinkedIn Profile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.72a1.63 1.63 0 0 0-1.63 1.63c0 .9.73 1.63 1.63 1.63s1.63-.73 1.63-1.63c0-.9-.73-1.63-1.63-1.63Z"/>
+                    </svg>
+                </a>
+                <button class="icon-btn" id="voiceToggleBtn" title="Toggle Voice Speech">
+                    <i data-lucide="volume-2" id="voiceIcon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- =================================================================
+             2. HERO LANDING VIEW (CHATGPT WELCOME SCREEN)
+             ================================================================= -->
+        <main class="view-section" id="landingView">
+            
+            <div class="hero-header">
+                <div class="avatar-badge-btn" id="heroBadgeBtn" title="Manohar Reddy Maddikara">
+                    <i data-lucide="bot"></i>
+                </div>
+                <h2 class="hero-subtitle">Hey, I'm Manohar 👋</h2>
+                <h1 class="hero-title">AI & ML Engineer</h1>
+            </div>
+
+            <!-- 3D Interactive Memoji Avatar -->
+            <div class="memoji-wrapper" id="memojiHeroWrapper">
+                <div class="memoji-ring"></div>
+                <div class="memoji-container" id="memojiContainer">
+                    <img src="assets/memoji.jpg" alt="Manohar Reddy Maddikara 3D Memoji Avatar" class="memoji-img" id="memojiHeroImg">
+                </div>
+            </div>
+
+            <!-- Glassmorphic Search / Ask Input -->
+            <form class="ask-input-form" id="heroForm">
+                <div class="ask-input-box">
+                    <input type="text" id="heroInput" placeholder="Ask me anything… (e.g. journey, projects, skills)" autocomplete="off">
+                    <button type="submit" class="send-btn" aria-label="Submit query">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- 6 Quick Action Grid Cards (ChatGPT Prompt Suggestions) -->
+            <div class="actions-grid">
+                <button class="action-card" data-query="Who are you? Tell me about your background." title="About Manohar">
+                    <div class="card-icon" style="color: #329696;">
+                        <i data-lucide="smile"></i>
+                    </div>
+                    <span class="card-label">Me</span>
+                </button>
+
+                <button class="action-card" data-query="Tell me about your career and academic journey." title="Manohar's Journey">
+                    <div class="card-icon" style="color: #6366F1;">
+                        <i data-lucide="compass"></i>
+                    </div>
+                    <span class="card-label">Journey</span>
+                </button>
+
+                <button class="action-card" data-query="What are your featured machine learning projects?" title="Machine Learning Projects">
+                    <div class="card-icon" style="color: #3E9858;">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <span class="card-label">Projects</span>
+                </button>
+
+                <button class="action-card" data-query="What are your technical skills in AI, Python, and Flask?" title="Technical Skills">
+                    <div class="card-icon" style="color: #856ED9;">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <span class="card-label">Skills</span>
+                </button>
+
+                <button class="action-card" data-query="Tell me about your education and certifications." title="Education & Certifications">
+                    <div class="card-icon" style="color: #B95F9D;">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <span class="card-label">Education</span>
+                </button>
+
+                <button class="action-card" data-query="How can I contact or hire you?" title="Contact Manohar">
+                    <div class="card-icon" style="color: #C19433;">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <span class="card-label">Contact</span>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- =================================================================
+             3. CHATGPT CONVERSATION VIEW (ACTIVE WHEN CLICKING ELEMENTS)
+             ================================================================= -->
+        <section class="chat-container hidden" id="chatView">
+            
+            <!-- Chat Messages Scroll Container -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Chat conversation items injected dynamically -->
+            </div>
+
+            <!-- ChatGPT Bottom Fixed Input Bar -->
+            <div class="chat-bottom-bar">
+                
+                <!-- Quick Action Elements Row for Fast Instant Chat -->
+                <div class="chat-quick-actions" id="chatQuickActions">
+                    <button class="chat-quick-pill" data-query="Who are you? Tell me about your background." title="About Manohar">
+                        <i data-lucide="smile" style="width: 15px; height: 15px; color: #329696;"></i>
+                        <span>Me</span>
+                    </button>
+                    <button class="chat-quick-pill" data-query="Tell me about your career and academic journey." title="My Journey">
+                        <i data-lucide="compass" style="width: 15px; height: 15px; color: #6366F1;"></i>
+                        <span>Journey</span>
+                    </button>
+                    <button class="chat-quick-pill" data-query="What are your featured machine learning projects?" title="Projects">
+                        <i data-lucide="briefcase" style="width: 15px; height: 15px; color: #3E9858;"></i>
+                        <span>Projects</span>
+                    </button>
+                    <button class="chat-quick-pill" data-query="What are your technical skills in AI, Python, and Flask?" title="Skills">
+                        <i data-lucide="layers" style="width: 15px; height: 15px; color: #856ED9;"></i>
+                        <span>Skills</span>
+                    </button>
+                    <button class="chat-quick-pill" data-query="Tell me about your education and certifications." title="Education & Certifications">
+                        <i data-lucide="award" style="width: 15px; height: 15px; color: #B95F9D;"></i>
+                        <span>Education</span>
+                    </button>
+                    <button class="chat-quick-pill" data-query="How can I contact or hire you?" title="Contact Manohar">
+                        <i data-lucide="mail" style="width: 15px; height: 15px; color: #C19433;"></i>
+                        <span>Contact</span>
+                    </button>
+                </div>
+
+                <form class="chat-input-row" id="chatForm">
+                    <input type="text" id="chatInput" placeholder="Message Manohar AI…" autocomplete="off">
+                    <button type="submit" class="send-btn" id="chatSendBtn" aria-label="Send Message">
+                        <i data-lucide="arrow-up" style="width: 18px; height: 18px;"></i>
+                    </button>
+                </form>
+
+                <p class="chat-footer-note">
+                    Manohar AI • Powered by Manohar Reddy Maddikara's Portfolio & Projects Data
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- =================================================================
+         4. PROJECT DEEP-DIVE MODAL (CLICKING CARDS IN CHAT)
+         ================================================================= -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content project-modal-dialog">
+            <button class="modal-close-btn" id="closeProjectModal" aria-label="Close">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="project-modal-banner">
+                <img id="projectModalImg" src="" alt="Project Preview">
+                <div class="project-modal-banner-overlay"></div>
+            </div>
+            <div class="project-modal-body" id="projectModalBody">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="fluid.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
